@@ -22,4 +22,4 @@ def normalizar_viagens(viagens: list[dict]):
             if adapter.suporta(viagem):
                 resultado.append(adapter.normalizar(viagem))
                 break
-    return resultado
+    return {"total": len(resultado), "viagens": resultado}
