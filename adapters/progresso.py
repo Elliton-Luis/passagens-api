@@ -1,8 +1,9 @@
 from adapters.adapter import ViagemAdapter 
 
 class ProgressoAdapter(ViagemAdapter):
+    
     def suporta(self, dados: dict) -> bool:
-     return "codigoViagem" in dados
+     return "codigoViagem" in dados and "PRG" in dados["codigoViagem"]
      
     def normalizar(self,dados: dict) -> dict:
         return {
