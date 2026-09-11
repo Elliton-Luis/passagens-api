@@ -35,6 +35,6 @@ class ProgressoAdapter(ViagemAdapter):
             "valor": float(dados["valorPassagem"].replace(",",".")),
             "moeda": "BRL",
         },
-        "categoria": "executivo",
-        "assentos_disponiveis": dados["assentosDisponiveis"],}
+        "categoria": dados['tipoServico'].lower(),
+        "assentos_disponiveis": int(dados["assentosDisponiveis"]),}
 

@@ -1,10 +1,21 @@
 from adapters.adapter import ViagemAdapter
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
+def conversor_data_hora(data_hora: str) -> str:
+    data = datetime.fromisoformat(data_hora)
+    data = data.astimezone(ZoneInfo("America/Bahia"))
+    return data.isoformat()
 
 class GontijoAdapter(ViagemAdapter):
 
+    categorias = {
+        "SEMI_SLEEPER": "semileito",
+        "SLEEPER": "leito",
+    }
+
     def suporta(self, dados: dict) -> bool:
-        return "serviceCode" in dados and "GON" in dados["serviceCode"]
+        return "serviceCode" in dados and "from" in dados and "to" in dados and "departure" in dados and "arrival" in dados and "estimatedDurationSeconds" in dados and "fare" in dados and "availableSeats" in dados and "serviceClass" in dados
 
     def normalizar(self, dados: dict) -> dict:
         return {
@@ -22,8 +33,8 @@ class GontijoAdapter(ViagemAdapter):
                 "uf": dados["to"]["state"],
             },
 
-            "partida": dados["departure"],
-            "chegada": dados["arrival"],
+            "partida": conversor_data_hora(dados["departure"]),
+            "chegada": conversor_data_hora(dados["arrival"]),
 
             "duracao_minutos": dados["estimatedDurationSeconds"] / 60,
 
@@ -32,7 +43,7 @@ class GontijoAdapter(ViagemAdapter):
                 "moeda": dados["fare"]["currency"],
             },
 
-            "categoria": "semileito",
+            "categoria": self.categorias[dados['serviceClass']],
 
             "assentos_disponiveis": dados["availableSeats"],
         }

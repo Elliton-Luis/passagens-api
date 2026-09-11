@@ -3,8 +3,12 @@ from adapters.adapter import ViagemAdapter
 
 class SertaoBusAdapter(ViagemAdapter):
 
+    categorias = {
+        "EXEC": "executivo"
+    }
+
     def suporta(self, dados: dict) -> bool:
-        return "numero" in dados and "SER" in dados["numero"]
+        return "numero" in dados and "rota" in dados and "horarios" in dados and "duracao_horas" in dados and "preco_total" in dados and "moeda" in dados and "lugares_livres" in dados
 
     def normalizar(self, dados: dict) -> dict:
         return {
@@ -32,7 +36,7 @@ class SertaoBusAdapter(ViagemAdapter):
                 "moeda": dados["moeda"],
             },
 
-            "categoria": "executivo",
+            "categoria": self.categorias[dados['servico']],
 
             "assentos_disponiveis": dados["lugares_livres"],
         }

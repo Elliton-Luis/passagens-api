@@ -4,7 +4,7 @@ from adapters.adapter import ViagemAdapter
 class RotaAdapter(ViagemAdapter):
 
     def suporta(self, dados: dict) -> bool:
-        return "trip_id" in dados and "ROT" in dados["trip_id"]
+        return "trip_id" in dados and "origem" in dados and "destino" in dados and "partida_em" in dados and "chegada_em" in dados and "duracao_minutos" in dados and "tarifa_centavos" in dados and "moeda" in dados and "vagas" in dados
 
     def normalizar(self, dados: dict) -> dict:
         return {
@@ -32,7 +32,7 @@ class RotaAdapter(ViagemAdapter):
                 "moeda": dados["moeda"],
             },
 
-            "categoria": "convencional",
+            "categoria": dados['classe'],
 
             "assentos_disponiveis": dados["vagas"],
         }
