@@ -148,15 +148,15 @@ Quando o formato do payload não é reconhecido por nenhum adapter:
 passagens-api/
 ├── adapters/
 │   ├── adapter.py       # interface ViagemAdapter + helpers comuns
-│   ├── erros.py         # ViagemInvalidaError
 │   ├── progresso.py
 │   ├── rota.py
 │   ├── gontijo.py
 │   └── sertao_bus.py
 ├── tests/
 │   └── test_api.py
-├── main.py               # endpoint + fluxo de identificação/validação
-├── viagem.py              # contrato de saída (Pydantic) + regras de negócio
+├── main.py              # endpoint + fluxo de identificação/validação
+├── viagem.py            # contrato de saída (Pydantic) + regras de negócio
+├── erros.py             # ViagemInvalidaError
 ├── requirements.txt
 └── README.md
 ```

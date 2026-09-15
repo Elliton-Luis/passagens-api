@@ -5,7 +5,7 @@ from adapters.progresso import ProgressoAdapter
 from adapters.rota import RotaAdapter
 from adapters.gontijo import GontijoAdapter
 from adapters.sertao_bus import SertaoBusAdapter
-from adapters.erros import ViagemInvalidaError
+from erros import ViagemInvalidaError
 from viagem import Viagem
 
 app = fastapi.FastAPI()

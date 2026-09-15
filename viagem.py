@@ -3,7 +3,7 @@ from enum import Enum
 
 from pydantic import BaseModel, field_validator, model_validator
 
-from adapters.erros import ViagemInvalidaError
+from erros import ViagemInvalidaError
 
 TOLERANCIA_DURACAO_MINUTOS = 1
 

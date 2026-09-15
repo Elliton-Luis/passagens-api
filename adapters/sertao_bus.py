@@ -1,5 +1,5 @@
 from adapters.adapter import ViagemAdapter
-from adapters.erros import ViagemInvalidaError
+from erros import ViagemInvalidaError
 
 CATEGORIAS = {
     "EXEC": "executivo",

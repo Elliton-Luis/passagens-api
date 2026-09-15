@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from adapters.erros import ViagemInvalidaError
+from erros import ViagemInvalidaError
 
 class ViagemAdapter(ABC):
     EMPRESA: str = ""

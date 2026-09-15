@@ -2,7 +2,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from adapters.adapter import ViagemAdapter
-from adapters.erros import ViagemInvalidaError
+from erros import ViagemInvalidaError
 
 FUSO_PADRAO = "America/Bahia"
 
